@@ -68,8 +68,14 @@ _localmodcfg=
 
 pkgbase=linux-bootsplash
 pkgdesc='Linux kernel with kernel bootsplash support'
+<<<<<<< HEAD
 pkgver=5.7.10
 pkgrel=1
+=======
+_srcver=5.5.3-arch1
+pkgver=${_srcver%-*}
+pkgrel=2
+>>>>>>> 4770c80860b997f97654f1aad3a75ef9b498cd85
 arch=(x86_64)
 url="https://www.kernel.org/"
 license=(GPL2)
@@ -83,6 +89,7 @@ source=(
   60-linux.hook  # pacman hook for depmod
   90-linux.hook  # pacman hook for initramfs regeneration
   linux.preset   # standard config files for mkinitcpio ramdisk
+<<<<<<< HEAD
   0000-sphinx-workaround.patch
   0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
   0002-PCI-EDR-Log-only-ACPI_NOTIFY_DISCONNECT_RECOVER-even.patch
@@ -90,6 +97,14 @@ source=(
   0004-virt-vbox-Add-support-for-the-new-VBG_IOCTL_ACQUIRE_.patch
   0005-bootsplash.patch
   0006-bootsplash.patch
+=======
+  0001-ZEN-Add-sysctl-and-CONFIG-to-disallow-unprivileged-C.patch
+  0002-iwlwifi-pcie-restore-support-for-Killer-Qu-C0-NICs.patch
+  0003-iwlwifi-mvm-Do-not-require-PHY_SKU-NVM-section-for-3.patch
+  0004-drm-i915-Wean-off-drm_pci_alloc-drm_pci_free.patch
+  0005-drm-Remove-PageReserved-manipulation-from-drm_pci_al.patch
+  0006-drm-i915-execlists-Always-force-a-context-reload-whe.patch
+>>>>>>> 4770c80860b997f97654f1aad3a75ef9b498cd85
   0007-bootsplash.patch
   0008-bootsplash.patch
   0009-bootsplash.patch
@@ -101,12 +116,18 @@ source=(
   0015-bootsplash.patch
   0016-bootsplash.patch
   0017-bootsplash.patch
+<<<<<<< HEAD
+=======
+  0018-bootsplash.patch
+  0019-bootsplash.patch
+>>>>>>> 4770c80860b997f97654f1aad3a75ef9b498cd85
   'ajax-loader.gif'
 )
 validpgpkeys=(
   'ABAF11C65A2970B130ABE3C479BE3E4300411886'  # Linus Torvalds
   '647F28654894E3BD457199BE38DBBDC86092693E'  # Greg Kroah-Hartman
 )
+<<<<<<< HEAD
 sha256sums=('4725430c65b7573b7d26c402dd9ffdad18529a302ce2e342c849e7800f193d44'
             SKIP
             'ed60b20ee841e16038da0d145fbf3f53fac94122c4001d6cd03abe64e9e760f6'
@@ -118,6 +139,19 @@ sha256sums=('4725430c65b7573b7d26c402dd9ffdad18529a302ce2e342c849e7800f193d44'
             'a0bd98f1056d06126532350a55f633c92a43e3adb94d96c94f4d22f54e4d9807'
             '4c5b15c39e7d8f7b8c0fbee16bcc3992cecf38bb790df494b411a57366e3b677'
             '18f22c5c095049cf3eebe4ec2c63e659dd35af6e49d2092865643d6ae2f7c411'
+=======
+sha256sums=('2bef3edcf44c746383045f4a809b2013e18c52319c827875ed8e89138951cab2'
+            '99f9170890845cd168271b4e6d75390dea1106b6aa06c032e3435074de05b95c'
+            'ae2e95db94ef7176207c690224169594d49445e04249d2499e9d2fbc117a0b21'
+            'c043f3033bb781e2688794a59f6d1f7ed49ef9b13eb77ff9a425df33a244a636'
+            'ad6344badc91ad0630caacde83f7f9b97276f80d26a20619a87952be65492c65'
+            'c981eacffe1091fbd4b22fd6359163bea343591c44c7c53573391541eb943d17'
+            'a25a82ce5a7e84d7a580036a250aa4d2621ab0fdac0f375b40417a207f87cf87'
+            'd5b209bcd90d11fd83055ffe8aea617776101502908c4aefdc7f6f3bc3a87929'
+            '03bcdd2668403cf7875bab86313cb4719dc35e202f4bb21c61c3646215a15be3'
+            '49a63d402a35dcefe18e858b0c66d0983a075c003fcfb50426fd0ba79639fafe'
+            '8e1e9cf077e774ac579bbaa7cb5932a1f96f50fad7a72fa998b868137c2472d3'
+>>>>>>> 4770c80860b997f97654f1aad3a75ef9b498cd85
             'a504f6cf84094e08eaa3cc5b28440261797bf4f06f04993ee46a20628ff2b53c'
             'e096b127a5208f56d368d2cb938933454d7200d70c86b763aa22c38e0ddb8717'
             '8c1c880f2caa9c7ae43281a35410203887ea8eae750fe8d360d0c8bf80fcc6e0'
@@ -163,6 +197,7 @@ prepare() {
   # https://bbs.archlinux.org/viewtopic.php?pid=1824594#p1824594
   sed -i -e 's/# CONFIG_PSI_DEFAULT_DISABLED is not set/CONFIG_PSI_DEFAULT_DISABLED=y/' ./.config
 
+<<<<<<< HEAD
    # https://bbs.archlinux.org/viewtopic.php?pid=1863567#p1863567
   sed -i -e '/CONFIG_LATENCYTOP=/ s,y,n,' \
       -i -e '/CONFIG_SCHED_DEBUG=/ s,y,n,' ./.config
@@ -176,6 +211,8 @@ prepare() {
   sed -i -e 's/CONFIG_DEBUG_INFO=y/# CONFIG_DEBUG_INFO is not set/' \
       -i -e '/CONFIG_DEBUG_INFO_DWARF4=y/d' -i -e '/CONFIG_DEBUG_INFO_BTF=y/d' ./.config
 
+=======
+>>>>>>> 4770c80860b997f97654f1aad3a75ef9b498cd85
   ### Optionally load needed modules for the make localmodconfig
   # See https://aur.archlinux.org/packages/modprobed-db
     if [ -n "$_localmodcfg" ]; then

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 diff --git a/Documentation/ABI/testing/sysfs-platform-bootsplash b/Documentation/ABI/testing/sysfs-platform-bootsplash
 new file mode 100644
 index 000000000000..742c7b035ded
@@ -319,3 +320,26 @@ index 5c237445761e..7ffac272434e 100644
  F:	drivers/video/fbdev/core/bootsplash*.*
  F:	drivers/video/fbdev/core/dummycon.c
  F:	include/linux/bootsplash.h
+=======
+diff --git a/drivers/tty/sysrq.c b/drivers/tty/sysrq.c
+index 3ffc1ce29023..bc6a24c9dfa8 100644
+--- a/drivers/tty/sysrq.c
++++ b/drivers/tty/sysrq.c
+@@ -49,6 +49,7 @@
+ #include <linux/syscalls.h>
+ #include <linux/of.h>
+ #include <linux/rcupdate.h>
++#include <linux/bootsplash.h>
+ 
+ #include <asm/ptrace.h>
+ #include <asm/irq_regs.h>
+@@ -104,6 +105,8 @@ static void sysrq_handle_SAK(int key)
+ {
+ 	struct work_struct *SAK_work = &vc_cons[fg_console].SAK_work;
+ 	schedule_work(SAK_work);
++
++	bootsplash_disable();
+ }
+ static struct sysrq_key_op sysrq_SAK_op = {
+ 	.handler	= sysrq_handle_SAK,
+>>>>>>> 4770c80860b997f97654f1aad3a75ef9b498cd85
